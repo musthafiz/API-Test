@@ -25,6 +25,8 @@ Here in this API new books were orderd list of books were viewed and different t
 
 Summary: Test Scripts 11 and Total 24 assertions were done. All of them passed with 0 skipped tests. The number of iteration was 1.
 
+
+
 # Requirements  
 **Java**  
 https://www.oracle.com/java/technologies/downloads/   
@@ -34,8 +36,9 @@ https://www.postman.com/
 https://nodejs.org/en/    
 
 
+
 # Assertions Details    
-#### Create User:       
+#### Create User         
 ```bash
 // set environment UserID
 var jsonData = pm.response.json();
@@ -51,7 +54,7 @@ pm.test("Status code is 201", function () {
 pm.response.to.have.status(201);
 });     
 ```
-#### GenerateToken:  
+#### GenerateToken    
 ```bash   
 // set environment token
 var jsonData = pm.response.json();
@@ -68,7 +71,7 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 ```    
-#### Authorized:
+#### Authorized  
 ```bash
 // Expected status code and response status code same or not
 pm.test("Status code is 200", function () {
@@ -81,7 +84,7 @@ pm.test("Verify the Authorization", function () {
  pm.expect(jsonData).to.be.true;
 });
 ```   
-#### Books List:   
+#### Books List     
 ```bash
 const response = pm.response.json();
 
@@ -112,7 +115,7 @@ pm.test("Test For Updating Order Later", function () {
     pm.expect(response.books[3].isbn).to.eql(pm.environment.get("forUpdatingOrderLater"))
 })
 ```   
-#### Ordering Books:  
+#### Ordering Books    
 ```bash
 // Expected status code and response status code same or not
 pm.test("Status code is 201", function () {
@@ -134,7 +137,7 @@ pm.test("Test Third Order", function () {
 })
 ```   
 
-#### Order Book Detail:   
+#### Order Book Detail     
 ```bash
 // Expected status code and response status code same or not
 pm.test("Status code is 200", function () {
@@ -160,7 +163,7 @@ pm.test("Test username", function () {
 })
 ```  
 
-#### Book ISBN Detail:    
+#### Book ISBN Detail      
 ```bash
 const jsonData = pm.response.json();
 
@@ -201,17 +204,17 @@ pm.test("Status code is 204", function () {
 
 
   Newman is a command-line Collection Runner for Postman. It enables you to run and test a Postman Collection directly from the command line.
-#### Install Command:  
+#### Install Command    
 ```bash
 npm install -g newman    
 ```
-#### Run Command:  
+#### Run Command    
 - newman run “Path/CollectionName.json” -e Path/EnvironmentName.json
 - newman run “Collection Link” -e “Path”/EnvironmentName.json    
 
-#### Report:
-Creating a HTML Report using Newman    
-#### Install Command:    
+#### Create HTML Report  
+ 
+#### Install Command      
 ```bash
 npm install -g newman-reporter-html
 ```
@@ -219,32 +222,7 @@ npm install -g newman-reporter-html
 ```bash
 npm install -g newman-reporter-htmlextra    
 ```
-#### Run Command:     
+#### Run Command      
 - newman run “Collection Link” -e “Path”/EnvironmentName.json -r cli,html    
 **or**    
 - newman run “Collection Link” -e “Path”/EnvironmentName.json -r cli,htmlextra    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
