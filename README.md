@@ -21,6 +21,8 @@ This document explains how to run a API test with Postman against a Swagger UI s
 I have Completed a API test of Book ordering site.   
 https://bookstore.toolsqa.com/swagger/#/     
 
+![summery](https://user-images.githubusercontent.com/92669932/195163253-ea5985da-7d5c-4de2-aece-ddcb604ee5e3.jpg)   
+
 Here in this API new books were orderd list of books were viewed and different tests were performed like GET, POST, PUT,DELETE.
 
 Summary: Test Scripts 11 and Total 24 assertions were done. All of them passed with 0 skipped tests. The number of iteration was 1.
