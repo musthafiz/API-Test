@@ -3,7 +3,6 @@
 - [Summery](https://github.com/musthafiz/API-Testing#summery)      
 - [Requirements](https://github.com/musthafiz/API-Testing#requirements)      
 - [Assertions Details](https://github.com/musthafiz/API-Testing#assertions-details)   
-
   - [Create User](https://github.com/musthafiz/API-Testing#create-user)   
   - [GenerateToken](https://github.com/musthafiz/API-Testing#generatetoken)   
   - [Authorized](https://github.com/musthafiz/API-Testing#authorized)   
@@ -13,7 +12,6 @@
   - [Book ISBN Detail](https://github.com/musthafiz/API-Testing#book-isbn-detail)   
   - [Edit ISBN](https://github.com/musthafiz/API-Testing#edit-isbn)   
   - [Delete User](https://github.com/musthafiz/API-Testing#delete-user)  
-  
 - [Create Test Suites](https://github.com/musthafiz/API-Testing#create-test-suites)      
       
 
