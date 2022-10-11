@@ -1,0 +1,739 @@
+{
+	"info": {
+		"_postman_id": "1660a7f4-197a-45f7-ad2e-278cab2525b0",
+		"name": "BookStoreAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19705309"
+	},
+	"item": [
+		{
+			"name": "createuser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// set environment UserID\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"userID\", jsonData.userID);\r",
+							"\r",
+							"// environment UserName and actual UserName same or not\r",
+							"pm.test(\"Test username\", function () {\r",
+							"pm.expect(jsonData.username).to.eql(pm.environment.get(\"userName\"));\r",
+							"});\r",
+							"\r",
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"{{userName}}\",\n  \"password\": \"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/User",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"User"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// set environment token\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"token\", jsonData.token);\r",
+							"\r",
+							"\r",
+							"// environment token and actual token same or not\r",
+							"pm.test(\"Test Token\", function () {\r",
+							"    pm.expect(jsonData.token).to.eql(pm.environment.get(\"token\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"{{userName}}\",\n  \"password\": \"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/GenerateToken",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"GenerateToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Actual Authorization true or false\r",
+							"pm.test(\"Verify the Authorization\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							" pm.expect(jsonData).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userName\": \"{{userName}}\",\n  \"password\": \"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/Authorized",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"Authorized"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bookslist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"// set environment isbn\r",
+							"\r",
+							"pm.environment.set(\"isbn1\", response.books[0].isbn);\r",
+							"pm.environment.set(\"isbn2\", response.books[1].isbn);\r",
+							"pm.environment.set(\"isbn3\", response.books[2].isbn);\r",
+							"pm.environment.set(\"forUpdatingOrderLater\", response.books[3].isbn);\r",
+							"\r",
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// environment isbn and actual isbn same or not\r",
+							"pm.test(\"Test isbn1\", function () {\r",
+							"    pm.expect(response.books[0].isbn).to.eql(pm.environment.get(\"isbn1\"))\r",
+							"})\r",
+							"pm.test(\"Test isbn2\", function () {\r",
+							"    pm.expect(response.books[1].isbn).to.eql(pm.environment.get(\"isbn2\"))\r",
+							"})\r",
+							"pm.test(\"Test isbn3\", function () {\r",
+							"    pm.expect(response.books[2].isbn).to.eql(pm.environment.get(\"isbn3\"))\r",
+							"})\r",
+							"pm.test(\"Test For Updating Order Later\", function () {\r",
+							"    pm.expect(response.books[3].isbn).to.eql(pm.environment.get(\"forUpdatingOrderLater\"))\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OrderingBooks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Test Fist order\", function () {\r",
+							"    pm.expect(jsonData.books[0].isbn).to.eql(pm.environment.get(\"isbn1\"))\r",
+							"})\r",
+							"pm.test(\"Test Second Order\", function () {\r",
+							"    pm.expect(jsonData.books[1].isbn).to.eql(pm.environment.get(\"isbn2\"))\r",
+							"})\r",
+							"pm.test(\"Test Third Order\", function () {\r",
+							"    pm.expect(jsonData.books[2].isbn).to.eql(pm.environment.get(\"isbn3\"))\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"{{userID}}\",\n  \"collectionOfIsbns\": [\n    {\n      \"isbn\": \"9781449325862\"\n    },{\n      \"isbn\": \"9781449331818\"\n    },{\n      \"isbn\": \"9781449337711\"\n    }\n\n  ]\n}"
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orderbookdetail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// set environment fist_orderd_book_in_the_list\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"fist_orderd_book_in_the_list\", jsonData.books[0].isbn);\r",
+							"\r",
+							"\r",
+							"// environment userID and actual userID same or not\r",
+							"\r",
+							"pm.test(\"Test userID\", function () {\r",
+							"    pm.expect(jsonData.userId).to.eql(pm.environment.get(\"userID\"))\r",
+							"})\r",
+							"\r",
+							"\r",
+							"// environment userName and actual userName same or not\r",
+							"\r",
+							"pm.test(\"Test username\", function () {\r",
+							"    pm.expect(jsonData.username).to.eql(pm.environment.get(\"userName\"))\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/User/{{userID}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"User",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book?ISBN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"// Expected status code and response status code same or not\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// environment fist_orderd_book_Name and actual fist_orderd_book_Name same or not\r",
+							"\r",
+							"pm.test(\"Test Fist order Book in the list\", function () {\r",
+							"    pm.expect(jsonData.isbn).to.eql(pm.environment.get(\"fist_orderd_book_in_the_list\"))\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Book?ISBN={{fist_orderd_book_in_the_list}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Book"
+					],
+					"query": [
+						{
+							"key": "ISBN",
+							"value": "{{fist_orderd_book_in_the_list}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editisbn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"\r",
+							"// Expected status code and response status code same or not\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"{{userID}}\",\n  \"isbn\": \"9781449365035\"\n}"
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books/9781449337711",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books",
+						"9781449337711"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteOnebook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Expected status code and response status code same or not\r",
+							"\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"isbn\": \"{{fist_orderd_book_in_the_list}}\",\n  \"userId\": \"{{userID}}\"\n}"
+				},
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Book",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_all_books",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Expected status code and response status code same or not\r",
+							"\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/BookStore/v1/Books?UserId={{userID}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"BookStore",
+						"v1",
+						"Books"
+					],
+					"query": [
+						{
+							"key": "UserId",
+							"value": "{{userID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Expected status code and response status code same or not\r",
+							"\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://bookstore.toolsqa.com/Account/v1/User/{{userID}}",
+					"protocol": "https",
+					"host": [
+						"bookstore",
+						"toolsqa",
+						"com"
+					],
+					"path": [
+						"Account",
+						"v1",
+						"User",
+						"{{userID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "isbn1",
+			"value": ""
+		},
+		{
+			"key": "isbn2",
+			"value": ""
+		},
+		{
+			"key": "isbn3",
+			"value": ""
+		},
+		{
+			"key": "forUpdatingOrderLater",
+			"value": ""
+		}
+	]
+}
