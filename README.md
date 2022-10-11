@@ -20,7 +20,9 @@ https://nodejs.org/en/
 # Newman  
   
 #### Install Command:  
+```bash
 npm install -g newman    
+```
 #### Run Command:  
 - newman run “Path/CollectionName.json” -e Path/EnvironmentName.json
 - newman run “Collection Link” -e “Path”/EnvironmentName.json    
@@ -28,10 +30,13 @@ npm install -g newman
 #### Report:
 Creating a HTML Report using Newman    
 #### Install Command:    
-- npm install -g newman-reporter-html     
+```bash
+npm install -g newman-reporter-html
+```
 **or**   
-- npm install -g newman-reporter-htmlextra    
-
+```bash
+npm install -g newman-reporter-htmlextra    
+```
 #### Run Command:     
 - newman run “Collection Link” -e “Path”/EnvironmentName.json -r cli,html    
 **or**    
