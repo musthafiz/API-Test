@@ -1,9 +1,9 @@
 # Content    
-- [Introduction](https://github.com/musthafiz/API-Testing/blob/main/README.md#introduction)    
-- [Summery](https://github.com/musthafiz/API-Testing/blob/main/README.md#summery)      
-- [Requirements](https://github.com/musthafiz/API-Testing/edit/main/README.md#requirements)      
-- [Assertions Details](https://github.com/musthafiz/API-Testing/edit/main/README.md#assertions-details)      
-- [Create Test Suites](https://github.com/musthafiz/API-Testing/edit/main/README.md#create-test-suites)      
+- [Introduction](https://github.com/musthafiz/API-Testing#introduction)    
+- [Summery](https://github.com/musthafiz/API-Testing#summery)      
+- [Requirements](https://github.com/musthafiz/API-Testing#requirements)      
+- [Assertions Details](https://github.com/musthafiz/API-Testing#assertions-details)      
+- [Create Test Suites](https://github.com/musthafiz/API-Testing#create-test-suites)      
       
 
 # Introduction
